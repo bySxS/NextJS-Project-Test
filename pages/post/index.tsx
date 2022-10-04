@@ -4,7 +4,6 @@ import { NextPage, GetServerSideProps } from 'next'
 import MainLayout from '../../shared/main-layout'
 import MyLink from '../../shared/ui/my-link'
 import { IPosts } from '../../ts-types/posts.interface'
-import PostById from './[id]'
 
 interface IPostsProps {
   posts: IPosts[]
@@ -14,14 +13,15 @@ const Posts: NextPage<IPostsProps> = ({ posts: serverPosts }) => {
   const [posts, setPosts] = useState(serverPosts)
   useEffect(() => {
     async function load() {
-      const response = await fetch('http://localhost:4200/posts')
-      const json = await response.json()
-      setPosts(json)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/post`)
+      const data = await response.json()
+      setPosts(data)
     }
     
     if (!serverPosts) {
       load()
     }
+    
   }, [])
   
   if (!posts) {
@@ -66,14 +66,8 @@ Posts.getInitialProps = async ({ req }) => {
       posts: null
     }
   }
-  const response = await fetch('http://localhost:4200/posts')
+  const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/post`)
   const posts = await response.json()
-  
-  // if (posts.length === 0) {
-  //   return {
-  //     notFound: true
-  //   }
-  // }
   
   return {
     posts
