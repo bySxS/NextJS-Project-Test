@@ -8,12 +8,14 @@ interface IPostByIdProps {
   post: IPosts
 }
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL
+
 const PostById: NextPage<IPostByIdProps> = ({ post }) => {
   // const router = useRouter()
   // const [post] = useState(serverPosts)
   // useEffect(() => {
   //   async function load() {
-  //     const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/posts/${router.query.id}`)
+  //     const response = await fetch(`${API_URL}/posts/${router.query.id}`)
   //     const json = await response.json()
   //     setPost(json)
   //   }
@@ -49,7 +51,7 @@ const PostById: NextPage<IPostByIdProps> = ({ post }) => {
 //       post: null
 //     }
 //   }
-//   const response = await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/posts/${query.id}`)
+//   const response = await fetch(`${API_URL}/posts/${query.id}`)
 //   const post = await response.json()
 //
 //   if (!post.title && res) {
@@ -70,7 +72,7 @@ export const getServerSideProps: GetServerSideProps =
     return { props: { post: null } }
   }
   const response =
-    await fetch(`${process.env.NEXT_PUBLIC_CLIENT_URL}/api/post/${query.id}`)
+    await fetch(`${API_URL}/api/post/${query.id}`)
   let post = null
   try {
     post = await response.json()
