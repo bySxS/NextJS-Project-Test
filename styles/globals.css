@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -14,6 +18,13 @@ a {
   box-sizing: border-box;
 }
 
+h1 {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+  text-align: center;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -23,7 +34,3 @@ a {
     background: black;
   }
 }
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

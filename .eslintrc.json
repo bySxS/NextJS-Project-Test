@@ -1,3 +1,21 @@
 {
-  "extends": ["next", "prettier", "next/core-web-vitals", "eslint:recommended"]
+  "env": {
+    "browser": true,
+    "es2021": true
+    //"jest": true
+  },
+  "extends": ["next",
+    "prettier",
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "standard",
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": ["@typescript-eslint"],
+  "rules": {
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error"
+  }
 }
