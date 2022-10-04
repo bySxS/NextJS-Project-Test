@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from 'next'
+import { GetServerSideProps, GetServerSidePropsContext, NextApiRequest, NextPage, NextPageContext } from 'next'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import MainLayout from '../../shared/main-layout'
@@ -65,7 +65,7 @@ const PostById: NextPage<IPostByIdProps> = ({ post }) => {
 // }
 
 export const getServerSideProps: GetServerSideProps =
-  async ({ query, req }) => {
+  async ({ req, query }: GetServerSidePropsContext) => {
   if (!req) {
     return { props: { post: null } }
   }
@@ -75,7 +75,7 @@ export const getServerSideProps: GetServerSideProps =
   try {
     post = await response.json()
   } catch (e) {
-    console.log('error')
+    console.log('error JSON parse post id')
   }
 
   if (!post || !post.title) {

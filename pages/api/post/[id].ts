@@ -7,10 +7,16 @@ const getPostById = async (id: number) => {
   return json.posts.filter((p) => p.id === id)[0]
 }
 
+interface PostNextApiRequest extends NextApiRequest {
+  query: {
+    id: string
+  }
+}
+
 export default async function handler(
-  req: NextApiRequest,
+  req: PostNextApiRequest,
   res: NextApiResponse<IPosts>
 ) {
-  const post = await getPostById(+(req.query.id ?? 0))
+  const post = await getPostById(+req.query.id)
   res.status(200).json(post)
 }
