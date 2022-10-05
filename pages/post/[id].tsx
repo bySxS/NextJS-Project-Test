@@ -8,7 +8,7 @@ interface IPostByIdProps {
   post: IPosts
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL
+const API_URL = process.env.NEXT_PUBLIC_CLIENT_URL
 
 const PostById: NextPage<IPostByIdProps> = ({ post }) => {
   // const router = useRouter()

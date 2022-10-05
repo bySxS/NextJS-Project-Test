@@ -10,7 +10,7 @@ interface IPostsProps {
   posts: IPosts[]
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL
+const API_URL = process.env.NEXT_PUBLIC_CLIENT_URL
 
 const Posts: NextPage<IPostsProps> = ({ posts: serverPosts }) => {
   // const [posts, setPosts] = useState(serverPosts)
@@ -81,7 +81,6 @@ Posts.getInitialProps = async ({ req }) => {
   }
   const response = await fetch(`${API_URL}/api/post`)
   const posts = await response.json()
-  
   return {
     posts
   }

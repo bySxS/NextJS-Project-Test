@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "mock": "json-server -w public/db.json -p 4200 -d 450"
+    "mock": "json-server -w public/db.json -p 4200 -d 450",
+    "serve": "concurrently \"npm run dev\" \"npm run mock\""
   },
   "dependencies": {
     "@emotion/react": "^11.10.4",
@@ -27,9 +28,11 @@
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "autoprefixer": "^10.4.12",
+    "concurrently": "^7.4.0",
     "eslint": "8.24.0",
     "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
     "postcss": "^8.4.17",
     "prettier": "^2.7.1",
     "sass": "^1.55.0",
