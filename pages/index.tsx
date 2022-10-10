@@ -8,22 +8,19 @@ import { en } from '../locales/en'
 import { ru } from '../locales/ru'
 
 const Home: NextPage = () => {
-  const router = useRouter()
-  const t = router.locale === 'en' ? en : ru
-  return (
-    <div className={styles.container}>
-      <Header />
-      <MainLayout>
-        <h1>
-          {t.title}
-        </h1>
-        <Button
-          variant={'outlined'}
-          onClick={() => Router.push('/post/1')}
-        >1 post</Button>
-      </MainLayout>
-    </div>
-  )
+	const router = useRouter()
+	const t = router.locale === 'en' ? en : ru
+	return (
+		<div className={styles.container}>
+			<Header />
+			<MainLayout>
+				<h1>{t.title}</h1>
+				<Button variant={'outlined'} onClick={() => Router.push('/post/1')}>
+					1 post
+				</Button>
+			</MainLayout>
+		</div>
+	)
 }
 
 export default Home
